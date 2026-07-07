@@ -1,0 +1,10 @@
+[
+    {
+        "book_id": "B101",
+        "title": "Python Programming",
+        "author": "Guido Van Rossom",
+        "genre": "Programming",
+        "quantity": 3,
+        "availability": "Available"
+    }
+]
