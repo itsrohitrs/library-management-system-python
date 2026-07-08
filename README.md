@@ -2,126 +2,48 @@
 
 # 📚 Library Management System
 
-### Python CLI → Full Stack → Data Science
+### Python CLI Application
 
-*A modular Library Management System that begins as a Python CLI application for an internship capstone and progressively evolves into a modern Full Stack & Data Science platform.*
+*A command-line based Library Management System developed as part of my Web Developer Internship Capstone Project.*
 
 ![Python](https://img.shields.io/badge/Python-3.x-blue?style=for-the-badge&logo=python)
-![Status](https://img.shields.io/badge/Status-In%20Development-orange?style=for-the-badge)
+![Status](https://img.shields.io/badge/Status-Completed-success?style=for-the-badge)
 ![License](https://img.shields.io/badge/License-Educational-green?style=for-the-badge)
 
 </div>
 
 ---
 
-# 🚀 Project Journey
+# 📖 About the Project
 
-```text
-Python CLI
-     │
-     ▼
-React Frontend
-     │
-     ▼
-FastAPI Backend
-     │
-     ▼
-MySQL Database
-     │
-     ▼
-Data Science Analytics
-```
+The **Library Management System** is a Python-based Command Line Interface (CLI) application that helps librarians manage books, members, and borrowing records efficiently.
+
+This project was developed as part of my internship to demonstrate Python programming, file handling, modular programming, authentication, and exception handling.
 
 ---
 
-# ⚡ Tech Stack
+# 🚀 Features
 
-| Current | Planned |
-|----------|----------|
-| 🐍 Python | ⚛️ React |
-| 📂 JSON | ⚡ FastAPI |
-| 💻 CLI | 🗄️ MySQL |
-| 🔒 SHA-256 | 📊 Data Science |
-| Git & GitHub | Dashboard & Analytics |
-
----
-
-# 📌 Development Progress
-
-## ✅ Phase 1 — Internship (CLI)
-
-- [x] Project Planning
-- [x] System Design
-- [x] Repository Setup
-- [x] Project Structure
-- [x] JSON Data Setup
-- [x] Authentication System
-- [x] Book Management
-- [x] Member Management
-- [x] Borrow & Return
-- [x] Validation
-- [x] Exception Handling
-- [x] Testing
-- [x] Documentation
-
----
-
-## 🎨 Phase 2 — Frontend
-
-- [ ] Landing Page
-- [ ] Authentication UI
-- [ ] Admin Dashboard
-- [ ] Book Management UI
-- [ ] Member Management UI
-- [ ] Borrow & Return UI
-- [ ] Analytics Dashboard
-- [ ] Responsive Design
-
----
-
-## ⚙️ Phase 3 — Backend
-
-- [ ] FastAPI Setup
-- [ ] Authentication APIs
-- [ ] Book APIs
-- [ ] Member APIs
-- [ ] Borrow APIs
-- [ ] JWT Authentication
-
----
-
-## 🗄️ Phase 4 — Database
-
-- [ ] MySQL Integration
-- [ ] Database Models
-- [ ] CRUD Operations
-- [ ] API Integration
-
----
-
-## 📊 Phase 5 — Data Science
-
-- [ ] Borrow Analytics
-- [ ] Popular Books Analysis
-- [ ] Reading Trends
-- [ ] Recommendation System
-- [ ] Prediction Model
-
----
-
-# ✨ Core Features
-
-- 🔐 Secure Authentication
-- 📚 Book Management
+- 🔐 User Authentication
+- 📚 Add, Update, Delete & Search Books
 - 👥 Member Management
-- 🔄 Borrow & Return
-- 📂 JSON Storage
+- 🔄 Borrow & Return Books
+- 📂 JSON-based Data Storage
+- 🔑 SHA-256 Password Hashing
 - ✅ Input Validation
 - ⚠️ Exception Handling
-- 🔑 SHA-256 Password Hashing
 - 👤 Role-Based Access Control
+- 📋 Borrow Limit per Member
 
-- ⚖️ Borrow limit per member: 3 (configurable in `borrow.py`)
+---
+
+# 🛠 Tech Stack
+
+- 🐍 Python 3
+- 📂 JSON
+- 💻 Command Line Interface (CLI)
+- 🔒 SHA-256 Hashing
+- Git & GitHub
 
 ---
 
@@ -152,36 +74,73 @@ library-management-system-python/
 
 # ▶️ Getting Started
 
+### Clone the repository
+
 ```bash
-git clone <repository-url>
+git clone https://github.com/itsrohitrs/library-management-system-python.git
+```
 
+### Navigate to the project
+
+```bash
 cd library-management-system-python
+```
 
+### Run the application
+
+```bash
 python main.py
 ```
 
 ---
 
-# 🎯 Project Goal
+# 📌 Project Modules
+
+- Authentication
+- Book Management
+- Member Management
+- Borrow & Return Management
+- File Handling
+- Utility Functions
+
+---
+
+# 🎯 Internship Objectives
+
+- Practice Python Programming
+- Implement Object-Oriented Design
+- Perform File Handling using JSON
+- Build a Modular CLI Application
+- Apply Authentication & Validation
+- Handle Exceptions Properly
+- Use Git & GitHub for Version Control
+
+---
+
+# 📸 Sample Menu
 
 ```text
-✔ Complete Internship Requirements
-                │
-                ▼
-Build a Modern Frontend
-                │
-                ▼
-Develop Backend APIs
-                │
-                ▼
-Integrate MySQL Database
-                │
-                ▼
-Add Data Science & Analytics
+==============================
+ LIBRARY MANAGEMENT SYSTEM
+==============================
+
+1. Login
+2. Register
+3. Book Management
+4. Member Management
+5. Borrow Book
+6. Return Book
+7. Exit
 ```
 
 ---
 
-# 📈 Current Focus
+# 👨‍💻 Developed For
 
-**Complete the Python CLI application by implementing all internship requirements before expanding the project into a Full Stack and Data Science platform.**
+**Web Developer Internship Capstone Project**
+
+---
+
+# 📄 License
+
+This project is created for educational and internship purposes.
