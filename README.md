@@ -56,13 +56,13 @@ Data Science Analytics
 - [x] Project Structure
 - [x] JSON Data Setup
 - [x] Authentication System
-- [ ] Book Management
-- [ ] Member Management
-- [ ] Borrow & Return
-- [ ] Validation
-- [ ] Exception Handling
-- [ ] Testing
-- [ ] Documentation
+- [x] Book Management
+- [x] Member Management
+- [x] Borrow & Return
+- [x] Validation
+- [x] Exception Handling
+- [x] Testing
+- [x] Documentation
 
 ---
 
