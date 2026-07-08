@@ -8,6 +8,7 @@ from file_handler import load_data, save_data
 BOOKS_FILE = "books.json"
 MEMBERS_FILE = "members.json"
 BORROW_FILE = "borrow_records.json"
+BORROW_LIMIT = 3
 
 
 # ------------------------------------------
@@ -35,6 +36,17 @@ def issue_book():
 
     if not member_found:
         error("Member Not Found!")
+        return
+
+    # Enforce borrow limit per member
+    current_borrowed = 0
+
+    for r in borrow_records:
+        if r.get("member_id") == member_id and r.get("status") == "Borrowed":
+            current_borrowed += 1
+
+    if current_borrowed >= BORROW_LIMIT:
+        print(f"Member has reached the borrow limit ({BORROW_LIMIT}). Return a book before issuing another.")
         return
 
     # Check Book
@@ -103,6 +115,33 @@ def view_borrow_records():
         print("Borrow Date :", record["borrow_date"])
         print("Due Date    :", record["due_date"])
         print("Status      :", record["status"])
+
+    print("-" * 40)
+
+
+def view_member_borrow_records(member_id):
+
+    records = load_data(BORROW_FILE)
+
+    print(f"\n===== BORROW RECORDS FOR {member_id} =====")
+
+    found = False
+
+    for record in records:
+
+        if record["member_id"] == member_id:
+
+            found = True
+
+            print("-" * 40)
+            print("Member ID   :", record["member_id"])
+            print("Book ID     :", record["book_id"])
+            print("Borrow Date :", record["borrow_date"])
+            print("Due Date    :", record["due_date"])
+            print("Status      :", record["status"])
+
+    if not found:
+        print("No Borrow Records Found for this member.")
 
     print("-" * 40)
 
@@ -186,36 +225,40 @@ def check_overdue():
 # ------------------------------------------
 
 def borrow_menu():
+    try:
+        while True:
 
-    while True:
+            print("\n" + "=" * 60)
+            print("            BORROW & RETURN")
+            print("=" * 60)
 
-        print("\n" + "=" * 60)
-        print("            BORROW & RETURN")
-        print("=" * 60)
+            print("1. Issue Book")
+            print("2. Return Book")
+            print("3. View Borrow Records")
+            print("4. Check Overdue Books")
+            print("5. Back")
 
-        print("1. Issue Book")
-        print("2. Return Book")
-        print("3. View Borrow Records")
-        print("4. Check Overdue Books")
-        print("5. Back")
+            choice = input("\nEnter your choice: ")
 
-        choice = input("\nEnter your choice: ")
+            if choice == "1":
+                issue_book()
 
-        if choice == "1":
-            issue_book()
+            elif choice == "2":
+                return_book()
 
-        elif choice == "2":
-            return_book()
+            elif choice == "3":
+                view_borrow_records()
 
-        elif choice == "3":
-            view_borrow_records()
+            elif choice == "4":
+                check_overdue()
 
-        elif choice == "4":
-            check_overdue()
+            elif choice == "5":
+                print("\nReturning to Admin Dashboard...")
+                break
 
-        elif choice == "5":
-            print("\nReturning to Admin Dashboard...")
-            break
+            else:
+                print("Invalid Choice!")
 
-        else:
-            print("Invalid Choice!")   
+    except (EOFError, KeyboardInterrupt):
+        print("\nInput interrupted. Returning to Admin Dashboard...")
+        return

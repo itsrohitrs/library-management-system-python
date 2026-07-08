@@ -1,7 +1,7 @@
 # ==========================================
 # Member Management Module
 # ==========================================
-from utils import print_title, success, error, not_empty
+from utils import print_title, success, error, not_empty, is_valid_email, is_valid_phone, confirm
 from file_handler import load_data, save_data
 
 MEMBERS_FILE = "members.json"
@@ -26,8 +26,24 @@ def add_member():
             return
 
     name = not_empty("Enter Member Name: ")
-    email = not_empty("Enter Email: ")
-    phone = not_empty("Enter Phone Number: ")
+
+    # Validate email
+    while True:
+        email = not_empty("Enter Email: ")
+
+        if not is_valid_email(email):
+            print("Enter a valid email address.")
+        else:
+            break
+
+    # Validate phone
+    while True:
+        phone = not_empty("Enter Phone Number: ")
+
+        if not is_valid_phone(phone):
+            print("Enter a valid phone number (digits, +, -, spaces).")
+        else:
+            break
 
     new_member = {
         "member_id": member_id,
@@ -141,6 +157,10 @@ def delete_member():
 
         if member["member_id"] == member_id:
 
+            if not confirm("Are you sure you want to delete this member?"):
+                print("Deletion cancelled.")
+                return
+
             members.remove(member)
 
             save_data(MEMBERS_FILE, members)
@@ -157,40 +177,44 @@ def delete_member():
 # ------------------------------------------
 
 def member_menu():
+    try:
+        while True:
 
-    while True:
+            print("\n" + "=" * 60)
+            print("             MEMBER MANAGEMENT")
+            print("=" * 60)
 
-        print("\n" + "=" * 60)
-        print("             MEMBER MANAGEMENT")
-        print("=" * 60)
+            print("1. Register Member")
+            print("2. View Members")
+            print("3. Search Member")
+            print("4. Update Member")
+            print("5. Delete Member")
+            print("6. Back")
 
-        print("1. Register Member")
-        print("2. View Members")
-        print("3. Search Member")
-        print("4. Update Member")
-        print("5. Delete Member")
-        print("6. Back")
+            choice = input("\nEnter your choice: ")
 
-        choice = input("\nEnter your choice: ")
+            if choice == "1":
+                add_member()
 
-        if choice == "1":
-            add_member()
+            elif choice == "2":
+                view_members()
 
-        elif choice == "2":
-            view_members()
+            elif choice == "3":
+                search_member()
 
-        elif choice == "3":
-            search_member()
+            elif choice == "4":
+                update_member()
 
-        elif choice == "4":
-            update_member()
+            elif choice == "5":
+                delete_member()
 
-        elif choice == "5":
-            delete_member()
+            elif choice == "6":
+                print("\nReturning to Admin Dashboard...")
+                break
 
-        elif choice == "6":
-            print("\nReturning to Admin Dashboard...")
-            break
+            else:
+                print("Invalid Choice!")
 
-        else:
-            print("Invalid Choice!")
+    except (EOFError, KeyboardInterrupt):
+        print("\nInput interrupted. Returning to Admin Dashboard...")
+        return

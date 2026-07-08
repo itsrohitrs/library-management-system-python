@@ -23,6 +23,15 @@ def load_data(filename):
 
 # Save data to a JSON file
 def save_data(filename, data):
+    # Write atomically: write to a temp file then replace
+    temp_filename = filename + ".tmp"
 
-    with open(filename, "w") as file:
+    with open(temp_filename, "w") as file:
         json.dump(data, file, indent=4)
+
+    try:
+        os.replace(temp_filename, filename)
+    except Exception:
+        # Fallback to simple write if atomic replace fails
+        with open(filename, "w") as file:
+            json.dump(data, file, indent=4)

@@ -45,6 +45,31 @@ def confirm(message):
 
 
 # ------------------------------------------
+# Email Validation
+# ------------------------------------------
+def is_valid_email(email):
+
+    import re
+
+    pattern = r'^[\w\.-]+@[\w\.-]+\.\w+$'
+
+    return re.match(pattern, email) is not None
+
+
+# ------------------------------------------
+# Phone Validation (simple)
+# ------------------------------------------
+def is_valid_phone(phone):
+
+    import re
+
+    # Allow digits, spaces, dashes, parentheses, plus sign
+    pattern = r'^[0-9\s\-\(\)\+]+$'
+
+    return re.match(pattern, phone) is not None
+
+
+# ------------------------------------------
 # Input Validation
 # ------------------------------------------
 

@@ -1,7 +1,7 @@
 # ==========================================
 # Book Management Module
 # ==========================================
-from utils import print_title, success, error, get_integer, not_empty
+from utils import print_title, success, error, get_integer, not_empty, confirm
 from file_handler import load_data, save_data
 
 BOOKS_FILE = "books.json"
@@ -185,6 +185,10 @@ def delete_book():
 
         if book["book_id"] == book_id:
 
+            if not confirm("Are you sure you want to delete this book?"):
+                print("Deletion cancelled.")
+                return
+
             books.remove(book)
 
             save_data(BOOKS_FILE, books)
@@ -201,40 +205,44 @@ def delete_book():
 # ------------------------------------------
 
 def book_menu():
+    try:
+        while True:
 
-    while True:
+            print("\n" + "=" * 60)
+            print("               BOOK MANAGEMENT")
+            print("=" * 60)
 
-        print("\n" + "=" * 60)
-        print("               BOOK MANAGEMENT")
-        print("=" * 60)
+            print("1. Add Book")
+            print("2. View All Books")
+            print("3. Search Book")
+            print("4. Update Book")
+            print("5. Delete Book")
+            print("6. Back")
 
-        print("1. Add Book")
-        print("2. View All Books")
-        print("3. Search Book")
-        print("4. Update Book")
-        print("5. Delete Book")
-        print("6. Back")
+            choice = input("\nEnter your choice: ")
 
-        choice = input("\nEnter your choice: ")
+            if choice == "1":
+                add_book()
 
-        if choice == "1":
-            add_book()
+            elif choice == "2":
+                view_books()
 
-        elif choice == "2":
-            view_books()
+            elif choice == "3":
+                search_book()
 
-        elif choice == "3":
-            search_book()
+            elif choice == "4":
+                update_book()
 
-        elif choice == "4":
-            update_book()
+            elif choice == "5":
+                delete_book()
 
-        elif choice == "5":
-            delete_book()
+            elif choice == "6":
+                print("Returning to Admin Dashboard...")
+                break
 
-        elif choice == "6":
-            print("Returning to Admin Dashboard...")
-            break
+            else:
+                print("Invalid Choice!")
 
-        else:
-            print("Invalid Choice!")
+    except (EOFError, KeyboardInterrupt):
+        print("\nInput interrupted. Returning to Admin Dashboard...")
+        return
