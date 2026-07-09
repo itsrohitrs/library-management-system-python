@@ -119,11 +119,11 @@ def main():
                                     elif ch == "3":
                                         # reuse existing issue flow but prefill member id
                                         print("Issuing book for Member ID:", member_id)
-                                        issue_book()
+                                        issue_book(prefilled_member_id=member_id)
 
                                     elif ch == "4":
                                         print("Returning book for Member ID:", member_id)
-                                        return_book()
+                                        return_book(prefilled_member_id=member_id)
 
                                     elif ch == "5":
                                         view_member_borrow_records(member_id)
