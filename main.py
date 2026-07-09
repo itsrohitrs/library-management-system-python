@@ -6,6 +6,7 @@ from auth import register, login
 from books import book_menu, view_books, search_book
 from members import member_menu
 from borrow import borrow_menu, view_member_borrow_records, issue_book, return_book
+from users import user_menu
 
 
 def admin_dashboard():
@@ -19,7 +20,8 @@ def admin_dashboard():
             print("1. Book Management")
             print("2. Member Management")
             print("3. Borrow & Return")
-            print("4. Logout")
+            print("4. User Management")
+            print("5. Logout")
 
             choice = input("\nEnter your choice: ")
 
@@ -33,6 +35,9 @@ def admin_dashboard():
                 borrow_menu()
 
             elif choice == "4":
+                user_menu()
+
+            elif choice == "5":
                 print("\nLogged Out Successfully!")
                 break
 
