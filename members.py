@@ -128,9 +128,23 @@ def update_member():
 
         if member["member_id"] == member_id:
 
-            member["name"] = input("Enter New Name: ")
-            member["email"] = input("Enter New Email: ")
-            member["phone"] = input("Enter New Phone Number: ")
+            member["name"] = not_empty("Enter New Name: ")
+
+            while True:
+                email = not_empty("Enter New Email: ")
+                if not is_valid_email(email):
+                    print("Enter a valid email address.")
+                else:
+                    member["email"] = email
+                    break
+
+            while True:
+                phone = not_empty("Enter New Phone Number: ")
+                if not is_valid_phone(phone):
+                    print("Enter a valid phone number (digits, +, -, spaces).")
+                else:
+                    member["phone"] = phone
+                    break
 
             save_data(MEMBERS_FILE, members)
 
