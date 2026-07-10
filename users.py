@@ -4,7 +4,6 @@
 from utils import print_title, success, error, not_empty, confirm
 from file_handler import load_data, save_data
 from auth import hash_password
-import hashlib
 
 USERS_FILE = "users.json"
 
