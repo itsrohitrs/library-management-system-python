@@ -74,10 +74,15 @@ def main():
                     if user.get("role") == "Admin":
                         admin_dashboard()
                     else:
-                        # Member dashboard: ask for member_id to associate
+                        # Member dashboard: use linked member_id when available
                         print("\nLogged in as Member.")
 
-                        member_id = input("Enter your Member ID to continue: ")
+                        member_id = user.get("member_id")
+
+                        if member_id:
+                            print(f"Using linked Member ID: {member_id}")
+                        else:
+                            member_id = input("Enter your Member ID to continue: ")
 
                         # Basic check: ensure member exists in members.json
                         from file_handler import load_data
