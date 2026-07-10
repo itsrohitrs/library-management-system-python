@@ -199,52 +199,6 @@ def view_member_borrow_records(member_id):
     print("-" * 40)
 
     # ------------------------------------------
-# Return Book
-# ------------------------------------------
-
-def return_book(prefilled_member_id=None):
-
-    books = load_data(BOOKS_FILE)
-    borrow_records = load_data(BORROW_FILE)
-
-    print("\n===== RETURN BOOK =====")
-
-    # Use prefilled ID if available
-    if prefilled_member_id:
-        member_id = prefilled_member_id
-    else:
-        member_id = input("Enter Member ID: ")
-        
-    book_id = input("Enter Book ID: ")
-
-    for record in borrow_records:
-
-        if (record["member_id"] == member_id and
-            record["book_id"] == book_id and
-            record["status"] == "Borrowed"):
-
-            record["status"] = "Returned"
-
-            for book in books:
-
-                if book["book_id"] == book_id:
-
-                    book["quantity"] += 1
-                    book["availability"] = "Available"
-
-                    break
-
-            save_data(BOOKS_FILE, books)
-            save_data(BORROW_FILE, borrow_records)
-
-            success("Book Returned Successfully!")
-            return
-
-    print("Borrow Record Not Found!")
-
-    # ------------------------------------------
-# Check Overdue Books
-# ------------------------------------------
 
 def check_overdue():
 
