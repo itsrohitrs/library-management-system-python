@@ -137,7 +137,7 @@ python main.py
 
 # 👨‍💻 Developed For
 
-**Web Developer Internship Capstone Project**
+**Python Internship Capstone Project**
 
 ---
 
