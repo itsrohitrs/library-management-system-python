@@ -4,7 +4,7 @@
 
 ### Python CLI Application
 
-*A command-line based Library Management System developed as part of my Web Developer Internship Capstone Project.*
+*A command-line based Library Management System developed as part of my Python Internship Capstone Project.*
 
 ![Python](https://img.shields.io/badge/Python-3.x-blue?style=for-the-badge&logo=python)
 ![Status](https://img.shields.io/badge/Status-Completed-success?style=for-the-badge)
